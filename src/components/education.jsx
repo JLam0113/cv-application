@@ -13,39 +13,33 @@ function CustomInput({ formLabel }) {
     );
 }
 
-function General() {
+function Education() {
 
     return (
         <>
             <label
-                htmlFor='firstName'>
-                First Name
+                htmlFor='school'>
+                School Name
             </label>
             <CustomInput
-                formLabel="firstName" />
+                formLabel="school" />
                 <br></br>
             <label
-                htmlFor='lastName'>
-                Last Name
+                htmlFor='study'>
+                Study
             </label>
             <CustomInput
-                formLabel="lastName" />
+                formLabel="study" />
                 <br></br>
             <label
-                htmlFor='email'>
+                htmlFor='date'>
                 Email
             </label>
             <CustomInput
-                formLabel="email" />
-                <br></br>
-            <label htmlFor='phone'>
-                Phone
-            </label >
-            <CustomInput
-                formLabel="phone" />
+                formLabel="date" />
                 <br></br>
         </>
     )
 }
 
-export default General
+export default Education
