@@ -1,7 +1,6 @@
 import { useState } from 'react'
 
-function CustomInput({ formLabel }) {
-    const [value, setValue] = useState('');
+function CustomInput({ formLabel, value, setValue }) {
 
     return (
         <input
@@ -13,8 +12,7 @@ function CustomInput({ formLabel }) {
     );
 }
 
-function CustomTextArea({ formLabel }) {
-    const [value, setValue] = useState('');
+function CustomTextArea({ formLabel, value, setValue }) {
 
     return (
         <textarea
@@ -26,44 +24,75 @@ function CustomTextArea({ formLabel }) {
     );
 }
 
-function Experience() {
+function Experience({isEditing}) {
+    const [company, setCompany] = useState('');
+    const [job, setJob] = useState('');
+    const [description, setDescription] = useState('');
+    const [startDate, setStartDate] = useState('');
+    const [endDate, setEndDate] = useState('');
+
 
     return (
         <>
             <label
                 htmlFor='company'>
-                Company Name
+                Company:&nbsp;
+                {isEditing ?
+                    <CustomInput
+                        formLabel="company"
+                        value={company}
+                        setValue={setCompany} /> :
+                    <b>{company}</b>
+                }
             </label>
-            <CustomInput
-                formLabel="company" />
             <br></br>
             <label
                 htmlFor='job'>
-                Job Title
+                Job Title:&nbsp;
+                {isEditing ?
+                    <CustomInput
+                        formLabel="job"
+                        value={job}
+                        setValue={setJob} /> :
+                    <b>{job}</b>
+                }
             </label>
-            <CustomInput
-                formLabel="job" />
             <br></br>
             <label
                 htmlFor='description'>
-                Job Description
+                Job Description:&nbsp;
+                {isEditing ?
+                    <CustomTextArea
+                        formLabel="description"
+                        value={description}
+                        setValue={setDescription} /> :
+                    <b>{description}</b>
+                }
             </label>
-            <CustomTextArea
-                formLabel="description" />
             <br></br>
             <label
                 htmlFor='startDate'>
-                Start Date
+                Start Date:&nbsp;
+                {isEditing ?
+                    <CustomInput
+                        formLabel="startDate"
+                        value={startDate}
+                        setValue={setStartDate} /> :
+                    <b>{startDate}</b>
+                }
             </label>
-            <CustomInput
-                formLabel="startDate" />
             <br></br>
             <label
                 htmlFor='endDate'>
-                End Date
+                End Date:&nbsp;
+                {isEditing ?
+                    <CustomInput
+                        formLabel="endDate"
+                        value={endDate}
+                        setValue={setEndDate} /> :
+                    <b>{endDate}</b>
+                }
             </label>
-            <CustomInput
-                formLabel="endDate" />
             <br></br>
         </>
     )

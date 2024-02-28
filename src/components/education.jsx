@@ -1,7 +1,6 @@
 import { useState } from 'react'
 
-function CustomInput({ formLabel }) {
-    const [value, setValue] = useState('');
+function CustomInput({ formLabel, value, setValue }) {
 
     return (
         <input
@@ -13,31 +12,49 @@ function CustomInput({ formLabel }) {
     );
 }
 
-function Education() {
+function Education({ isEditing }) {
+    const [school, setSchool] = useState('');
+    const [study, setStudy] = useState('');
+    const [date, setDate] = useState('');
 
     return (
         <>
             <label
                 htmlFor='school'>
-                School Name
+                School Name:&nbsp;
+                {isEditing ?
+                    <CustomInput
+                        formLabel="school"
+                        value={school}
+                        setValue={setSchool} /> :
+                    <b>{school}</b>
+                }
             </label>
-            <CustomInput
-                formLabel="school" />
-                <br></br>
+            <br></br>
             <label
                 htmlFor='study'>
-                Study
+                Study:&nbsp;
+                {isEditing ?
+                    <CustomInput
+                        formLabel="study"
+                        value={study}
+                        setValue={setStudy} /> :
+                    <b>{study}</b>
+                }
             </label>
-            <CustomInput
-                formLabel="study" />
-                <br></br>
+            <br></br>
             <label
                 htmlFor='date'>
-                Email
+                Date:&nbsp;
+                {isEditing ?
+                    <CustomInput
+                        formLabel="date"
+                        value={date}
+                        setValue={setDate} /> :
+                    <b>{date}</b>
+                }
             </label>
-            <CustomInput
-                formLabel="date" />
-                <br></br>
+            <br></br>
         </>
     )
 }

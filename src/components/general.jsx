@@ -1,7 +1,6 @@
 import { useState } from 'react'
 
-function CustomInput({ formLabel }) {
-    const [value, setValue] = useState('');
+function CustomInput({ formLabel, value, setValue }) {
 
     return (
         <input
@@ -13,37 +12,65 @@ function CustomInput({ formLabel }) {
     );
 }
 
-function General() {
+function General({isEditing}) {
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
+
+
+
 
     return (
         <>
-            <label
+           <label
                 htmlFor='firstName'>
-                First Name
+                First Name:&nbsp;
+                {isEditing ?
+                    <CustomInput
+                        formLabel="firstName"
+                        value={firstName}
+                        setValue={setFirstName} /> :
+                    <b>{firstName}</b>
+                }
             </label>
-            <CustomInput
-                formLabel="firstName" />
-                <br></br>
+            <br></br>
             <label
                 htmlFor='lastName'>
-                Last Name
+                Last Name:&nbsp;
+                {isEditing ?
+                    <CustomInput
+                        formLabel="lastName"
+                        value={lastName}
+                        setValue={setLastName} /> :
+                    <b>{lastName}</b>
+                }
             </label>
-            <CustomInput
-                formLabel="lastName" />
-                <br></br>
+            <br></br>
             <label
-                htmlFor='email'>
-                Email
+                htmlFor='Email'>
+                Email:&nbsp;
+                {isEditing ?
+                    <CustomInput
+                        formLabel="email"
+                        value={email}
+                        setValue={setEmail} /> :
+                    <b>{email}</b>
+                }
             </label>
-            <CustomInput
-                formLabel="email" />
-                <br></br>
-            <label htmlFor='phone'>
-                Phone
-            </label >
-            <CustomInput
-                formLabel="phone" />
-                <br></br>
+            <br></br>
+            <label
+                htmlFor='phone'>
+                Phone:&nbsp;
+                {isEditing ?
+                    <CustomInput
+                        formLabel="phone"
+                        value={phone}
+                        setValue={setPhone} /> :
+                    <b>{phone}</b>
+                }
+            </label>
+            <br></br>
         </>
     )
 }
